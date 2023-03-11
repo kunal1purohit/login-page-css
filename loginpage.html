@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket-Team Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Montserrat', serif;
+        }
+
+        header div {
+            background: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+
+
+        }
+
+        .nav {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 20px;
+
+
+
+        }
+
+        .nav:hover {
+            color: grey;
+            font-weight: bolder;
+
+        }
+
+        header img {
+            position: fixed;
+            top: -13%;
+            left: -10%;
+            width: 550px;
+            opacity: 1;
+
+        }
+
+        header button {
+            margin-left: 100px;
+            margin-right: 30px;
+            font-size: 30px;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            background-color: rgb(17, 16, 16);
+            color: white;
+            font-weight: bold;
+        }
+
+        header button:hover {
+            color: grey;
+            cursor: pointer;
+
+        }
+
+        .slideshow {
+
+            max-width: 100%;
+            height: 100%;
+        }
+
+        .photos {
+            display: none;
+
+
+            padding-bottom: -1px;
+
+        }
+
+        .social {
+
+            position: fixed;
+            top: 30%;
+            left: 0.3%;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .social img {
+            height: 30px;
+            width: 30px;
+            border: none;
+            background: none;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+
+        .social img:hover {
+            transform: scale(1.05);
+            transform: translateX(5px);
+
+        }
+
+        .social button {
+            background: none;
+            border: none;
+            padding-right: 20px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+
+            margin: 50px auto;
+            width: 50%;
+            display: grid;
+            grid-template-rows: 3fr 5fr 1fr;
+            background-color: rgb(0, 0, 0, 0.5);
+            border-radius: 20px;
+        }
+
+        .imgcontainer {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .imgcontainer img {
+
+            height: 300px;
+            margin-top: -15%;
+            margin-bottom: -15%;
+
+        }
+
+        .container1 {
+            text-align: center;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .container1 input {
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+
+        }
+
+        .container1 button {
+            border: none;
+            width: 80%;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: rgb(18, 117, 237);
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .container1 button:hover {
+            transform: scale(1.02);
+        }
+
+        .container1 label {
+            color: white;
+            margin: 10px auto;
+            margin-bottom: 0px;
+
+        }
+
+        .container2 {
+
+            color: white;
+        }
+
+        .container2 span {
+            float: right;
+            margin-right: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 10px;
+
+        }
+
+        .container2 span a {
+            text-decoration: none;
+            color: red;
+        }
+
+        .container2 button {
+            border: none;
+            background-color: RED;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 15px;
+            margin-left: 20px;
+            border-radius: 10px;
+
+        }
+
+        .container2 button:hover {
+            background-color: rgb(144, 6, 6);
+            cursor: pointer;
+        }
+
+        .animate {
+            animation: zoom 0.3s ease;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .modal1 {
+            display: none;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+
+
+
+        }
+
+        .rocket {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(9, 9, 9, 0.5);
+            justify-content: space-evenly;
+            align-items: center;
+            border: 1px solid black;
+            border-radius: 10px;
+            animation: zoom 1s ease;
+
+        }
+
+        .rocket img {
+
+            height: 300px;
+            width: 300px;
+            padding: 0px;
+            margin-bottom: -10px;
+            animation: zoom 1s ease;
+
+        }
+
+        .rocket img:hover {
+            transform: rotate(-45deg);
+        }
+
+        .rocket h1 {
+            font-size: 30px;
+            font-weight: bolder;
+            color: white;
+            margin: 0px 20px;
+            margin-bottom: 30px;
+
+
+        }
+
+        .rocket button {
+            border: none;
+            background-color: red;
+            color: white;
+            font-size: 20px;
+            font-weight: bolder;
+            margin-bottom: 20px;
+            padding: 10px;
+            z-index: 4;
+        }
+
+        .rocket button:hover {
+            background-color: rgb(112, 5, 5);
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <a href="loginpage.html">
+                <img src="logo frame mini 1.png" alt="error loading image">
+            </a>
+            <a href="loginpage.html" class="nav">
+                Home
+            </a>
+            <a href="#" class="nav">
+                Contact Us
+            </a>
+            <a href="#" class="nav">
+                Recruitement
+            </a>
+            <a href="#" class="nav">
+                Team
+            </a>
+            <a href="#" class="nav">
+                Sponsorship
+            </a>
+            <button id="logbtn" onclick="document.getElementById('form').style.display='block'">
+                Log In
+            </button>
+        </div>
+    </header>
+    <div class="slideshow">
+        <div class="photos anime1">
+
+            <img src="slideshow2.jpg" style="width:100%">
+
+        </div>
+
+        <div class="photos anime1">
+
+            <img src="slideshow1.jpg" style="width:100%">
+
+        </div>
+
+        <div class="photos anime1">
+
+            <img src="slideshow3.jpg" style="width:100%">
+
+        </div>
+
+
+
+    </div>
+    <div class="social">
+        <button>
+            <a href="https://www.facebook.com/iitb.rocket.team" target="_blank"><img src="./facebook.png"
+                    alt="facebook"></a>
+        </button>
+        <button>
+            <a href="https://www.instagram.com/iitb.rocket.team/" target="_blank"><img src="./instagram.png"
+                    alt="insta"></a>
+        </button>
+    </div>
+
+
+
+    <div id="form" class="modal">
+
+        <form class="modal-content animate" id="formid" action="#" onsubmit="change()" >
+            <div class="imgcontainer">
+                <a href="loginpage.html">
+                    <img src="./logo frame mini 1.png" alt="logo not loaded">
+                </a>
+            </div>
+
+
+            <div class="container1">
+
+                <input type="text" placeholder="Enter Student Name" name="sname" required>
+
+
+                <input type="text" placeholder="Enter Roll No." name="roll" required>
+
+
+                <input type="email" placeholder="Enter Email Address" name="mail" required>
+
+                <button type="submit"   >Sign In</button>
+                <label for="remember">Remember Me</label>
+                <input type="checkbox" checked="checked" name="remember">
+
+
+            </div>
+
+            <div class="container2">
+                <button onclick="document.getElementById('form').style.display='none'">Cancel</button>
+                <span>Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
+
+
+    <div id="takeoff" class="modal1">
+        <div class="rocket">
+            <img src="./rocket.png" alt="error loading rocket">
+            <h1>You have successfully Logged In</h1>
+            <button onclick="document.getElementById('takeoff').style.display='none'">Take Off</button>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+<script>
+    //js for slideshow
+    let slideno = 0;
+    showSlides();
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("photos");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideno++;
+        if (slideno > slides.length) { slideno = 1 }
+        slides[slideno - 1].style.display = "block";
+        setTimeout(showSlides, 10000);
+    }
+
+
+
+    //js for form  
+
+
+    var modal1 = document.getElementById('takeoff');
+    var modal = document.getElementById('form');
+
+
+
+    
+    
+
+    window.onclick = function (event1) {
+        if (event1.target == modal || event1.target == modal1 ) {
+            modal.style.display = "none";
+            modal1.style.display = "none";
+        }
+    }
+
+    function change() {
+
+        console.log(100);
+
+
+        modal.style.display = 'none';
+
+
+        modal1.style.display = 'flex';
+
+
+
+
+        let logbtn = document.getElementById('logbtn');
+        logbtn.style.display = 'none';
+
+
+
+    }
+      var form = document.getElementById("formid");
+      function handleForm(event) { event.preventDefault(); }
+      form.addEventListener('submit', handleForm);
+
+
+
+
+</script>
+
+
+</html>
